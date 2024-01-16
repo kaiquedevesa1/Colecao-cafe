@@ -1,0 +1,72 @@
+body{
+    background-color: #111315;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh; /* Isso faz com que o corpo ocupe 100% da altura da viewport */
+    margin: 0; /* Remove margens padrão do corpo */
+}
+
+.intro{
+    font-size: 2rem;
+    color: #FEF7EE;
+    position: absolute;
+    text-align: center;
+    left: 50%;
+    top: 50%;
+    text-align: center;
+}
+
+.fundo{
+   position: relative;
+   bottom: 30vh;
+   width: 100%;
+   height: auto;
+    
+}
+.inicio{
+    text-align: center;
+    
+    
+}
+
+.introducao{
+    position: absolute;
+    top: 55%;
+    left: 44%;
+    display: inline;
+    color: #6F757C;
+    width: 500px;
+    
+
+}
+
+.colecao {
+    width: 50%;
+    position:absolute ;
+    bottom: 100px;
+    top: 80vh;
+    left: 80vh;
+    flex-wrap: wrap; /* criacao de colunas */
+    justify-content: space-between; /* cria espacos entre os objetos */
+    align-items: center;
+    inline-size: auto; /* faz com que o objeto quebra linha assim que necessario*/
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* consegue criar colunas */
+    gap: 20px;
+}
+
+.colecao img{
+   position: relative;
+   width: 200px;
+   height: 130px;
+   object-fit: cover;
+   border-radius: 20px;
+   
+   
+}
+
+h3{
+    color: #FEF7EE;
+}
+
