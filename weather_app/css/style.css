@@ -62,6 +62,7 @@ body {
   justify-content: center;
   align-items: center;
   margin-bottom: 0.6rem;
+  gap: 10px;
 }
 
 #weather-data h2 i {
@@ -72,7 +73,7 @@ body {
   margin: 0, 6rem;
 }
 
-#coutry {
+#country {
   height: 15px;
 }
 
@@ -89,7 +90,7 @@ body {
   align-items: center;
 }
 
-#details-container #umidity {
+#details-container #humidity {
   border-right: 1px solid #fff;
   margin: 0.6rem;
   padding: 0.6rem;
