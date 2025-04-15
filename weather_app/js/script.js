@@ -13,6 +13,8 @@ const countryElement = document.querySelector("#country");
 const humidityElement = document.querySelector("#humidity span");
 const windElement = document.querySelector("#wind span");
 
+const weatherContainer = document.querySelector("#weather-data");
+
 //Funções
 
 const getWeatherData = async (city) => {
@@ -25,24 +27,34 @@ const getWeatherData = async (city) => {
 };
 
 const showWeatherData = async (city) => {
-  const data = await getWeatherData(city);
+  try {
+    const data = await getWeatherData(city);
 
-  cityElement.innerText = data.name;
-  tempElement.innerText = parseInt(data.main.temp);
-  descElement.innerText = data.weather[0].description;
+    cityElement.innerText = data.name;
+    tempElement.innerText = parseInt(data.main.temp);
+    descElement.innerText = data.weather[0].description;
 
-  weatherIconElement.setAttribute(
-    "src",
-    `http://openweathermap.org/img/wn/${data.weather[0].icon}.png`
-  );
+    weatherIconElement.setAttribute(
+      "src",
+      `http://openweathermap.org/img/wn/${data.weather[0].icon}.png`
+    );
 
-  countryElement.setAttribute(
-    "src",
-    `${apiCountryURL}${data.sys.country.toLowerCase()}.png`
-  );
+    countryElement.setAttribute(
+      "src",
+      `${apiCountryURL}${data.sys.country.toLowerCase()}.png`
+    );
 
-  humidityElement.innerText = `${data.main.humidity}%`;
-  windElement.innerText = `${data.wind.speed}km/h`;
+    humidityElement.innerText = `${data.main.humidity}%`;
+    windElement.innerText = `${data.wind.speed}km/h`;
+
+    weatherContainer.classList.remove("hide");
+  } catch (err) {
+    weatherContainer.classList.remove("hide");
+    weatherContainer.classList.add("error");
+
+    weatherContainer.innerText =
+      "Não foi possível encontrar o clima de uma cidade com este nome ";
+  }
 };
 
 //Eventos
@@ -52,4 +64,12 @@ searchBtn.addEventListener("click", (e) => {
   const city = cityInput.value;
 
   showWeatherData(city);
+});
+
+cityInput.addEventListener("keyup", (e) => {
+  if (e.code === "Enter") {
+    const city = e.target.value;
+
+    showWeatherData(city);
+  }
 });
